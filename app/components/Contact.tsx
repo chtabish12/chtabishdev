@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "7 Kingscourt Plaza, Birmingham B12 0RT, UK",
-    href: "https://maps.google.com?q=Birmingham+B12+0RT",
+    value: "116 Neville Road, Erdington, Birmingham, B23 7SB, UK",
+    href: "https://maps.google.com?q=116+Neville+Road,+Erdington,+Birmingham,+B23+7SB",
     color: "text-purple-400",
     bg: "bg-purple-500/10 border-purple-500/20",
   },
