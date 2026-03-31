@@ -1,4 +1,4 @@
-export function GitHubIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
+export function GitHubIcon({ size = 18, className = "" }) {
   return (
     <svg
       width={size}
@@ -13,7 +13,7 @@ export function GitHubIcon({ size = 18, className = "" }: { size?: number; class
   );
 }
 
-export function LinkedInIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
+export function LinkedInIcon({ size = 18, className = "" }) {
   return (
     <svg
       width={size}
@@ -28,7 +28,7 @@ export function LinkedInIcon({ size = 18, className = "" }: { size?: number; cla
   );
 }
 
-export function UpworkIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
+export function UpworkIcon({ size = 18, className = "" }) {
   return (
     <svg
       width={size}
