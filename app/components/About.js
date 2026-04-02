@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
+
 const stats = [
   { label: "Years Experience", value: "5+" },
   { label: "Projects Delivered", value: "20+" },
@@ -7,23 +10,50 @@ const stats = [
   { label: "Technologies", value: "15+" },
 ];
 
+function ProfilePhoto() {
+  const [imgError, setImgError] = useState(false);
+
+  if (imgError) {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center">
+        <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-blue-500/40 to-cyan-500/40 flex items-center justify-center">
+          <span className="text-7xl font-bold bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            TN
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src="/profile.jpg"
+      alt="Muhammad Tabish Nadeem — Senior Software Engineer"
+      fill
+      sizes="256px"
+      className="object-cover object-top"
+      style={{ filter: "contrast(1.05) saturate(1.1) brightness(1.02)" }}
+      onError={() => setImgError(true)}
+      priority
+    />
+  );
+}
+
 export default function About() {
   return (
     <section id="about" className="section-padding max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         {/* Left: Avatar + Stats */}
         <div className="flex flex-col items-center lg:items-start gap-8">
-          {/* Avatar placeholder */}
+          {/* Avatar */}
           <div className="relative">
-            <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-blue-600/30 to-cyan-600/30 border border-blue-500/20 flex items-center justify-center overflow-hidden">
-              <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-blue-500/40 to-cyan-500/40 flex items-center justify-center">
-                <span className="text-7xl font-bold bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  TN
-                </span>
-              </div>
+            {/* Outer glow ring */}
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500 via-cyan-500 to-emerald-500 opacity-70 blur-sm" />
+            <div className="relative w-64 h-64 rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-blue-500/20">
+              <ProfilePhoto />
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+            <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg shadow-blue-500/30 border border-blue-400/30">
               Senior SE
             </div>
           </div>
@@ -88,6 +118,7 @@ export default function About() {
               { label: "Email", value: "tabishnadeen71@gmail.com" },
               { label: "Education", value: "BS Computer Software Eng." },
               { label: "University", value: "FAST-NUCES (2017–2021)" },
+              { label: "Right to Work", value: "UK & Europe — Settled Status (UK)" },
             ].map((item) => (
               <div key={item.label} className="flex gap-3 items-start">
                 <span className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0" />
@@ -99,6 +130,18 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* UK Work Rights Notice */}
+          <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20">
+            <p className="text-xs text-slate-400 leading-relaxed">
+              <span className="text-blue-400 font-semibold">🇬🇧 Right to Live & Work</span>
+              {" "}— I have full rights to live and work in the{" "}
+              <span className="text-slate-300">United Kingdom</span> and{" "}
+              <span className="text-slate-300">Europe</span>, with{" "}
+              <span className="text-slate-300">Settled Status</span> in the UK.
+              A Share Code confirming my right to work can be provided upon request.
+            </p>
           </div>
 
           <div className="flex flex-wrap gap-4 mt-8">
@@ -117,6 +160,13 @@ export default function About() {
               className="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 transition-all duration-300"
             >
               Upwork Profile
+            </a>
+            <a
+              href="mailto:tabishnadeen71@gmail.com?subject=Share%20Code%20Request&body=Hi%20Tabish%2C%0A%0ACould%20you%20please%20provide%20your%20UK%20Right%20to%20Work%20Share%20Code%3F%0A%0AThank%20you."
+              className="px-6 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-all duration-300 flex items-center gap-2"
+            >
+              <span>🇬🇧</span>
+              Request Share Code
             </a>
           </div>
         </div>
