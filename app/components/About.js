@@ -27,7 +27,7 @@ function ProfilePhoto() {
 
   return (
     <Image
-      src="/profile.jpg"
+      src="/profile.png"
       alt="Muhammad Tabish Nadeem — Senior Software Engineer"
       fill
       sizes="256px"
@@ -49,7 +49,7 @@ export default function About() {
           <div className="relative">
             {/* Outer glow ring */}
             <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500 via-cyan-500 to-emerald-500 opacity-70 blur-sm" />
-            <div className="relative w-64 h-64 rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-blue-500/20">
+            <div className="relative w-96 h-96 rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-blue-500/20">
               <ProfilePhoto />
             </div>
             {/* Floating badge */}
