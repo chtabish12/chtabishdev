@@ -5,6 +5,20 @@ import { GitHubIcon } from "./SocialIcons";
 
 const projects = [
   {
+    title: "PakWheels.com — Pakistan's Largest Auto Marketplace",
+    description:
+      "Pakistan's #1 car buying and selling platform. Contributed as Senior Software Engineer — modernised the React architecture, migrated class components to functional components, integrated Redux, GTM, and GA4, and launched the international multi-tenant expansion via ArabWheels (arabwheels.ae).",
+    image: "🚘",
+    color: "from-green-500/20 to-emerald-500/20",
+    border: "border-green-500/20",
+    tags: ["React", "Redux", "GTM", "GA4", "Multi-tenant", "Core Web Vitals"],
+    links: [
+      { label: "Live Site", url: "https://www.pakwheels.com/", icon: "globe" },
+    ],
+    category: "Professional",
+    highlight: true,
+  },
+  {
     title: "ArabWheels — International Automotive Platform",
     description:
       "Launched a tenant-based React application for international expansion. Brought the PakWheels platform to the Arab region, handling multi-tenant architecture, RTL support, and regional customization.",
