@@ -83,8 +83,8 @@ export default function Contact() {
             <a
               key={item.label}
               href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              target={item.href.startsWith("https") ? "_blank" : undefined}
+              rel={item.href.startsWith("https") ? "noopener noreferrer" : undefined}
               className={`card-glass p-5 flex items-center gap-4 border ${item.bg} hover:-translate-y-0.5 transition-all duration-300 group block`}
             >
               <div
