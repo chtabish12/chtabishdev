@@ -1,23 +1,41 @@
 "use client";
 
 import { Briefcase, Calendar, MapPin } from "lucide-react";
+import Reveal from "./Reveal";
 
 const experiences = [
   {
+    company: "AFH Wealth Management",
+    role: "Senior Frontend Developer",
+    period: "Jun 2026 – Present",
+    duration: "Newly joined",
+    location: "Bromsgrove, England, United Kingdom",
+    type: "Full-time",
+    color: "from-indigo-500 to-violet-500",
+    highlights: [
+      "Building and maintaining customer-facing financial dashboards and advisor tools with React, Next.js and TypeScript",
+      "Architecting reusable, accessible component libraries to drive a consistent design system across products",
+      "Partnering with product, design and back-end teams to ship secure, compliant wealth-management features",
+      "Optimising performance and Core Web Vitals across data-heavy financial interfaces",
+      "Championing modern frontend best practices, code quality and automated testing",
+    ],
+    tags: ["React", "Next.js", "TypeScript", "Design Systems", "Accessibility", "Core Web Vitals"],
+  },
+  {
     company: "Mercor",
     role: "Senior Software Engineer",
-    period: "Oct 2025 – Present",
-    duration: "6 months",
+    period: "Oct 2025 – May 2026",
+    duration: "8 months",
     location: "United Kingdom",
     type: "Full-time",
     color: "from-blue-500 to-cyan-500",
     highlights: [
-      "Work on advancing autonomous AI agents that can understand, navigate, and modify real-world codebases",
-      "Solve complex SWE-bench-style tasks involving debugging, feature implementation, and test fixes across diverse repositories",
-      "Build and refine agent workflows for multi-step reasoning, code generation, and execution",
-      "Work with sandboxed environments, containerized setups, and version-controlled systems to simulate real developer scenarios",
-      "Analyze model failures and improve success rates through better prompting, tool orchestration, and evaluation strategies",
-      "Contribute to scalable evaluation frameworks for benchmarking LLM coding capabilities",
+      "Advanced autonomous AI agents that can understand, navigate, and modify real-world codebases",
+      "Solved complex SWE-bench-style tasks involving debugging, feature implementation, and test fixes across diverse repositories",
+      "Built and refined agent workflows for multi-step reasoning, code generation, and execution",
+      "Worked with sandboxed environments, containerized setups, and version-controlled systems to simulate real developer scenarios",
+      "Analyzed model failures and improved success rates through better prompting, tool orchestration, and evaluation strategies",
+      "Contributed to scalable evaluation frameworks for benchmarking LLM coding capabilities",
     ],
     tags: ["Agentic AI", "LLM", "SWE-bench", "Docker", "Python"],
   },
@@ -132,7 +150,7 @@ export default function Experience() {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-500/20 to-transparent hidden md:block" />
+        <div className="timeline-line absolute left-0 md:left-1/2 top-0 bottom-0 w-px hidden md:block" />
 
         <div className="space-y-12">
           {experiences.map((exp, index) => (
@@ -143,13 +161,14 @@ export default function Experience() {
               }`}
             >
               {/* Timeline dot */}
-              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 border-2 border-[#0a0a0f] z-10" />
+              <div className="timeline-dot hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 z-10" />
 
               {/* Spacer */}
               <div className="hidden md:block md:w-1/2" />
 
               {/* Card */}
-              <div className="md:w-1/2 card-glass p-6 hover:border-blue-500/20 transition-all duration-300 hover:-translate-y-1 group">
+              <Reveal delay={(index % 2) * 80} className="md:w-1/2">
+                <div className="card-glass p-6 hover:border-blue-500/20 transition-all duration-300 hover:-translate-y-1 group">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div>
@@ -216,7 +235,8 @@ export default function Experience() {
                     View Project →
                   </a>
                 )}
-              </div>
+                </div>
+              </Reveal>
             </div>
           ))}
         </div>

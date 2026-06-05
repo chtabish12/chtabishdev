@@ -57,6 +57,171 @@ body {
   }
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.9s ease both; }
+.animate-slide-up { animation: slide-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ---- Global animated background (aurora + particles) ---- */
+.bg-fx {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-fx .particles {
+  position: absolute;
+  inset: 0;
+}
+.bg-fx .bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image:
+    linear-gradient(#fff 1px, transparent 1px),
+    linear-gradient(90deg, #fff 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+}
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  will-change: transform;
+}
+.aurora-1 {
+  width: 50vw; height: 50vw; left: -10vw; top: -12vw;
+  background: radial-gradient(circle, #1d4ed8, transparent 70%);
+  animation: aurora-a 24s ease-in-out infinite;
+}
+.aurora-2 {
+  width: 46vw; height: 46vw; right: -10vw; top: 18vh;
+  background: radial-gradient(circle, #0891b2, transparent 70%);
+  animation: aurora-b 28s ease-in-out infinite;
+}
+.aurora-3 {
+  width: 42vw; height: 42vw; left: 28vw; bottom: -16vw;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  animation: aurora-c 32s ease-in-out infinite;
+}
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8vw, 6vh) scale(1.15); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-7vw, 5vh) scale(1.1); }
+}
+@keyframes aurora-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, -6vh) scale(1.2); }
+}
+
+/* ---- Holographic glassmorphism cards ---- */
+.card-glass {
+  position: relative;
+  overflow: hidden;
+}
+/* gradient holo border that lights up on hover */
+.card-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.55),
+    transparent 38%,
+    transparent 62%,
+    rgba(34, 211, 238, 0.45)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.card-glass:hover::before { opacity: 1; }
+/* shimmer sweep on hover */
+.card-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+.card-glass:hover::after { left: 150%; }
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Glowing timeline ---- */
+.timeline-line {
+  background: linear-gradient(to bottom, rgba(96, 165, 250, 0.6), rgba(124, 58, 237, 0.25), transparent);
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.35);
+}
+.timeline-dot {
+  box-shadow: 0 0 0 4px rgba(10, 10, 15, 1), 0 0 16px 2px rgba(96, 165, 250, 0.6);
+}
+.timeline-dot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  animation: dot-pulse 2.4s ease-out infinite;
+}
+@keyframes dot-pulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ---- Respect reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .aurora { animation: none !important; }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
